@@ -1,12 +1,12 @@
 Summary:	A modern, minimalist taskbar for Xfce
 Summary(pl.UTF-8):	Nowoczesny, minimalistyczny pasek zadań dla Xfce
 Name:		xfce4-docklike-plugin
-Version:	0.4.1
+Version:	0.4.2
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
 Source0:	https://archive.xfce.org/src/panel-plugins/xfce4-docklike-plugin/0.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	f9d1061aaf38a9382551c56ddbb9a957
+# Source0-md5:	6ff29f5a531861a4a15da4efb4b5a424
 URL:		https://goodies.xfce.org/projects/panel-plugins/xfce4-docklike-plugin
 BuildRequires:	autoconf
 BuildRequires:	automake
