@@ -1,30 +1,30 @@
 Summary:	A modern, minimalist taskbar for Xfce
 Summary(pl.UTF-8):	Nowoczesny, minimalistyczny pasek zadań dla Xfce
 Name:		xfce4-docklike-plugin
-Version:	0.4.3
+Version:	0.5.0
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://archive.xfce.org/src/panel-plugins/xfce4-docklike-plugin/0.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	c24a5aefa3ddfb30098ff32ecc897f1f
+Source0:	https://archive.xfce.org/src/panel-plugins/xfce4-docklike-plugin/0.5/%{name}-%{version}.tar.xz
+# Source0-md5:	ed4ef18f1ca1ba1eb05a98d407b5ddd2
 URL:		https://goodies.xfce.org/projects/panel-plugins/xfce4-docklike-plugin
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	cairo-devel >= 1.16.0
 BuildRequires:	cairo-gobject-devel >= 1.16.0
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.58.0
 BuildRequires:	gtk+3-devel >= 3.24.0
 BuildRequires:	gtk-layer-shell-devel >= 0.7.0
-BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 3.30.0
 BuildRequires:	libxfce4ui-devel >= 4.16.0
 BuildRequires:	libxfce4util-devel >= 4.16.0
 BuildRequires:	libxfce4windowing-devel >= 4.19.4
+BuildRequires:	meson >= 0.54.0
+BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	xfce4-dev-tools >= 4.16.0
 BuildRequires:	xfce4-panel-devel >= 4.16.0
 BuildRequires:	xorg-lib-libX11-devel >= 1.6.7
+BuildRequires:	xorg-lib-libXi-devel >= 1.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,18 +44,13 @@ nazywany dokiem.
 %setup -q
 
 %build
-%configure \
-	--disable-static
-
-%{__make}
+%meson
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.la
+%meson_install
 
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
